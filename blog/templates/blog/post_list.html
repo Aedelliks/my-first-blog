@@ -1,23 +1,61 @@
-<html>
-    <head>
-        <title>Blog motoryzacyjny</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href ="/">Blog motoryzacyjny</a></h1>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+    <div class="post">
+        <div class="date">
+            <p>published: {{ post.published_date }}</p>
         </div>
-
-        {% for post in posts %}
-            <div>
-                <p>published: {{ post.published_date }}</p>
-                <h2><a href="">{{ post.title }}</a></h2>
-                <p>{{ post.text|linebreaksbr }}</p>
-            </div>
-        {% endfor %}
-    </body>
-</html>
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+    {% endfor %}
+{% endblock %}
 
 
+<!--{%load static%}-->
+<!--<html>-->
+    <!--<head>-->
+        <!--<title>Blog motoryzacyjny</title>-->
+        <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+        <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">-->
+        <!--<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">-->
+        <!--<link rel="stylesheet" href="{% static 'css/blog.css' %}">-->
+    <!--</head>-->
+    <!--<body>-->
+        <!--<div class="page-header">-->
+            <!--<h1><a href ="/">Blog motoryzacyjny</a></h1>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<p><a href="https://en.wikipedia.org/wiki/Django" class="external_link" id="link_to_wiki_page">WIKI DJANGO</a></p>-->
+        <!--</div>-->
+
+        <!--<div class="content containter">-->
+            <!--<div lass="row">-->
+                <!--<div class="col-md-8">-->
+                    <!--{% for post in posts %}-->
+                    <!--<div class="post">-->
+                        <!--<div class="date">-->
+                            <!--<p>published: {{ post.published_date }}</p>-->
+                        <!--</div>-->
+                        <!--<h2><a href="">{{ post.title }}</a></h2>-->
+                        <!--<p>{{ post.text|linebreaksbr }}</p>-->
+                    <!--</div>-->
+                    <!--{% endfor %}-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <!--&lt;!&ndash;{% for post in posts %}&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="post">&ndash;&gt;-->
+                <!--&lt;!&ndash;<p>published: {{ post.published_date }}</p>&ndash;&gt;-->
+                <!--&lt;!&ndash;<h2><a href="">{{ post.title }}</a></h2>&ndash;&gt;-->
+                <!--&lt;!&ndash;<p>{{ post.text|linebreaksbr }}</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;{% endfor %}&ndash;&gt;-->
+    <!--</body>-->
+<!--</html>-->
 
 <!--<html>-->
     <!--<head>-->
